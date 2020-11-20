@@ -9,10 +9,9 @@ def payment(request):
         amount = request.GET.get('amount')
         email = request.GET.get('email')
         Email = request.GET.get('Email')
-        print(email,Email)
-        content = f"Payment recieved of {amount}"
-        send_mail("Payment Gateaway Integration", content, "paymentsp07@gmail.com", [email])
-        context = {
-            "amount": amount,
-        }
-    return render(request, 'payment.html',context)
+        content = f"Payment recieved. Thanks for this donation."
+        if email is None:
+            send_mail("Payment Gateaway Integration", content, "paymentsp07@gmail.com", [Email])
+        elif Email is None:
+            send_mail("Payment Gateaway Integration", content, "paymentsp07@gmail.com", [email])
+    return render(request, 'payment.html')
