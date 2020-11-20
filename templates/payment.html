@@ -28,7 +28,7 @@
     <h1><a href="/" style="color:white;">Payment Gateaway Integration</a></h1>
     <div class="w3_agile_main_grids">
       <div class="agile_main_top_grid" style="background-color: #0eccb1;">
-        <form class="creditly-card-form agileinfo_form" id="myform" method="GET" onsubmit="valid()">
+        <form class="creditly-card-form agileinfo_form myform" method="GET" onsubmit="valid()">
         {% csrf_token %}
           <div class="w3_agileits_main_top_grid_right input-group mb-3 mx-0">
             <input type="number" name="amount" id="amount" onfocusout="amt()" class="form-control" min='0' placeholder="Enter Amount" 
@@ -87,13 +87,13 @@
                           name="expiration-month-and-year" placeholder="MM / YY" required />
                       </div>
                     </div>
-                    <button type='submit' class='btn btn-outline-info' id="btn-submit" style="margin-bottom: 20px;">Make a payment</button>
+                    <button type='submit' class='btn btn-outline-info btn-submit' style="margin-bottom: 20px;">Make a payment</button>
                   </div>
                 </section>
               </form>
             </div>
               <div class="agileits_w3layouts_tab2">
-                <form method="GET" id="myform" onsubmit="valid()">
+                <form method="GET" class="myform" onsubmit="valid()">
                 {% csrf_token %}
                 <label><b>Bank :</b></label>
                 <select style="float:right;" name='bank' required />
@@ -110,7 +110,7 @@
                 <input type='email' placeholder="johnsmith@upi" required />
                 <label>Password</label><br/>
                 <input type="password" placeholder="PASSWORD" required />
-                <button type='submit' class='btn btn-outline-info' id="btn-submit" style="margin-bottom: 20px;">Make a payment</button>
+                <button type='submit' class='btn btn-outline-info btn-submit' style="margin-bottom: 20px;">Make a payment</button>
                 </form>
               </div>
           </div>
@@ -167,20 +167,20 @@
   <script type="text/javascript">
     function valid(){
       event.preventDefault();
-    $(document).on('click', '#btn-submit', function(e) {
+    $(document).on('click', '.btn-submit', function(e) {
     e.preventDefault();
     swal({
         title: 'successfull',
         text: "Payment successfull of "+ document.getElementById("amount").value + ", Thanks!",
         icon: "success",
     }).then(function (result) {
-        $('#myform').submit();
+        $('.myform').submit();
     });
 });
     }
     function amt(){ 
       var x = document.getElementById("amount").value;
-      document.getElementById("show").innerHTML = x; 
+      document.getElementById("show").innerHTML = x;
     }
   </script>
   <!-- //tabs -->
